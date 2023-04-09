@@ -12,16 +12,20 @@ public class HighTechPage {
 
     WebDriver driver;
     WebDriverWait wait;
-
+    By itemButtonsBy = By.cssSelector("#zg-right-col #gridItemRoot");
     By thirstHighTechSellItemBy = By.cssSelector("#p13n-asin-index-2");
 
     public HighTechPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
     }
+    
+    public void openProductPageBy(int index) {
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(itemButtonsBy)).get(index).click();
+    }
 
-    public ProductPage goToProductPage() {
-        wait.until(ExpectedConditions.elementToBeClickable(thirstHighTechSellItemBy)).click();
+    public ProductPage openThirdTopSellHighTech() {
+        this.openProductPageBy(2);
         return new ProductPage(driver);
     }
 

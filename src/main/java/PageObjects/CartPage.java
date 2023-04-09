@@ -15,7 +15,7 @@ public class CartPage {
     WebDriverWait wait;
     //    #sc-active-cart .sc-product-title
     // span.a-size-base-plus.a-color-base.sc-product-title.sc-grid-item-product-title
-    By ordersTitle = By.cssSelector(".a-truncate.sc-grid-item-product-title");
+    By productTitles = By.cssSelector(".a-truncate.sc-grid-item-product-title");
     By cartItemsBy = By.cssSelector("#sc-active-cart .sc-list-item-content-inner");
     By quantityBy = By.cssSelector(".a-dropdown-prompt");
 
@@ -24,11 +24,11 @@ public class CartPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
     }
 
-    public String getProductTitle() {
+    public String getProductTitle(int index) {
 //        WebElement cardItem = wait.until(ExpectedConditions.presenceOfElementLocated(cartItemsBy));
 //        String subTitle = cardItem.findElement(ordersTitle).getText();
-        String subTitle = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(ordersTitle))
-                .get(0).getText();
+        String subTitle = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(productTitles))
+                .get(index).getText();
         return subTitle.substring(0, subTitle.length() - 1);
     }
 

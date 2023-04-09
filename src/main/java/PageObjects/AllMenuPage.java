@@ -7,27 +7,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BestSellPage {
-
+public class AllMenuPage {
     static final int TIMEOUT = 5; // 2 seconds
-
     WebDriver driver;
     WebDriverWait wait;
-    By highTechBy = By.cssSelector("._p13n-zg-nav-tree-all_style_zg-browse-height-small__nleKL>a");
+    // locators
+    By optionButtonsBy = By.cssSelector(".hmenu-visible>li .hmenu-item");
 
-    //#zg_left_col2 div[role='treeitem']
-    public BestSellPage(WebDriver driver) {
+    public AllMenuPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
     }
+
     private void openPageBy(int index) {
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(highTechBy))
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(optionButtonsBy))
                 .get(index).click();
     }
 
-    public HighTechPage openHighTechPage() {
-        this.openPageBy(19);
-        return new HighTechPage(driver);
+    public BestSellPage openBestSellPage() {
+        this.openPageBy(1);
+        return new BestSellPage(driver);
+    }
+
+    public GamesAndConsolesPage openGamesAndConsolesPage() {
+        this.openPageBy(16);
+        return new GamesAndConsolesPage(driver);
     }
 }
-

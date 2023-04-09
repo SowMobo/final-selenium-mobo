@@ -18,8 +18,8 @@ public class ProductPage {
     By nonMerciButton = By.cssSelector("span#attachSiNoCoverage");
     //locator 1:  #sw-gtc #nav-cart
     //locator 2: span#attach-sidesheet-view-cart-button
-    By openCartButton = By.cssSelector("span#attach-sidesheet-view-cart-button");
-
+    By expensiveProductOpenCartButton = By.cssSelector("span#attach-sidesheet-view-cart-button");
+    By lowCostProductOpenCartButtonBy = By.cssSelector("#sw-gtc.a-button");
     By quantityBy = By.cssSelector("#quantity");
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -27,29 +27,32 @@ public class ProductPage {
     }
 
     public String getTitle() {
-
         return wait.until(ExpectedConditions.presenceOfElementLocated(productTitle)).getText();
     }
 
-    public ProductPage updateQuantity(int newQuantity) {
-        WebElement quantitySelectTag = driver.findElement(quantityBy);
-        Select dropdownQuantity =  new Select(quantitySelectTag);
-        dropdownQuantity.selectByIndex(newQuantity);
+   public ProductPage updateQuantity(int newQuantity) {
+        WebElement quantitySelectorTag = driver.findElement(quantityBy);
+        Select dropdownQuantityTag = new Select(quantitySelectorTag);
+        dropdownQuantityTag.selectByIndex(newQuantity);
         return this;
-    }
+   }
 
     public ProductPage addToCart() {
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
         return this;
     }
-
     public ProductPage notAcceptInsurance() {
         wait.until(ExpectedConditions.elementToBeClickable(nonMerciButton)).click();
         return this;
     }
 
-    public CartPage openCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(openCartButton)).click();
+    public CartPage openCartExpensiveProduct() {
+        wait.until(ExpectedConditions.elementToBeClickable(expensiveProductOpenCartButton)).click();
+        return new CartPage(driver);
+    }
+
+    public CartPage openCartLowCostProduct() {
+        wait.until(ExpectedConditions.elementToBeClickable(lowCostProductOpenCartButtonBy)).click();
         return new CartPage(driver);
     }
 }
