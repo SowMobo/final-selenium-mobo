@@ -8,25 +8,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage {
+public class HomePage extends BasePage {
     // Class variables
-    static final int TIMEOUT = 5; // 2 seconds
     // locators
-    WebDriver driver;
-    WebDriverWait wait;
-    Header header;
     By accepTCookiesButton = By.cssSelector("input#sp-cc-accept");
-    By tousMenusButton = By.cssSelector("#nav-xshop-container .nav-a");
-    By bestSellBy = By.cssSelector("#nav-xshop>a:nth-child(3)");
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-        header = new Header(driver);
+        super(driver);
         /**
          * Acceder au site "amazon.fr"
          */
-        driver.get("https://amazon.fr");
+        this.driver.get("https://amazon.fr");
     }
 
     public HomePage closeCookiesPopup() {
@@ -35,17 +27,6 @@ public class HomePage {
          */
         driver.findElement(accepTCookiesButton).click();
         return this;
-    }
-    public AllMenuPage openAllMenuPage() {
-        return header.openAllMenuPage();
-    }
-
-    public BestSellPage openBestSellPage() {
-        return header.openBestSellPage();
-    }
-
-    public CustomerServicePage opencustomerService() {
-        return header.opencustomerService();
     }
 
 }

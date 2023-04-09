@@ -9,19 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CartPage {
-    static final int TIMEOUT = 5; // 2 seconds
-    WebDriver driver;
-    WebDriverWait wait;
-    //    #sc-active-cart .sc-product-title
-    // span.a-size-base-plus.a-color-base.sc-product-title.sc-grid-item-product-title
+public class CartPage extends BasePage{
     By productTitles = By.cssSelector(".a-truncate.sc-grid-item-product-title");
     By cartItemsBy = By.cssSelector("#sc-active-cart .sc-list-item-content-inner");
     By quantityBy = By.cssSelector(".a-dropdown-prompt");
 
     public CartPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        super(driver);
     }
 
     public String getProductTitle(int index) {
@@ -33,6 +27,7 @@ public class CartPage {
     }
 
     public String getQuantity(int productIndex) {
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(quantityBy)).get(productIndex).getText();
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(quantityBy))
+                .get(productIndex).getText();
     }
 }
