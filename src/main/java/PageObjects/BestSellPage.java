@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class BestSellPage {
 
-    static final int TIMEOUT = 5; // 2 seconds
+    static final int TIMEOUT = 10; // 2 seconds
 
     WebDriver driver;
     WebDriverWait wait;
