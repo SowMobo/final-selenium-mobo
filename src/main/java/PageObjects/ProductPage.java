@@ -9,10 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductPage {
-    static final int TIMEOUT = 15; // 2 seconds
-    WebDriver driver;
-    WebDriverWait wait;
+public class ProductPage extends BasePage{
     By productTitle = By.cssSelector("#productTitle");
     By addToCartButton = By.cssSelector("input#add-to-cart-button");
     By nonMerciButton = By.cssSelector("span#attachSiNoCoverage");
@@ -22,8 +19,7 @@ public class ProductPage {
     By lowCostProductOpenCartButtonBy = By.cssSelector("#sw-gtc.a-button");
     By quantityBy = By.cssSelector("#quantity");
     public ProductPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        super(driver);
     }
 
     public String getTitle() {
