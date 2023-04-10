@@ -29,8 +29,16 @@ public class AllMenuPage {
         return new BestSellPage(driver);
     }
 
-    public GamesAndConsolesPage openGamesAndConsolesPage() {
+    public GamesAndConsolesPage openAllGamesAndConsolesPage() {
         this.openPageBy(16);
+        // A sleep seems the better solution to handle this transition. After simulation,
+        // the minimum wait is turn out to be 300 ms
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        this.openPageBy(2);
         return new GamesAndConsolesPage(driver);
     }
 }

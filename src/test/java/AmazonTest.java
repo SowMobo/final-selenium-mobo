@@ -20,8 +20,7 @@ public class AmazonTest {
     @Test
     public void top3SellHighTechProductSearchTest() {
         HomePage home = new HomePage(driver);
-        ProductPage thirdTopSellProduct = home.closeCookiesPopup()
-                .openBestSellPage()
+        ProductPage thirdTopSellProduct = home.openBestSellPage()
                 .openHighTechPage()
                 .openThirdTopSellHighTech()
                 .updateQuantity(2);
@@ -44,9 +43,21 @@ public class AmazonTest {
                         actualSubTitle);
     }
 
+    @Test
+    public void searchTopSellGameAndConsoleItem() {
+        HomePage home = new HomePage(driver);
+        ProductPage topSellProduct = home.openAllMenuPage()
+                .openAllGamesAndConsolesPage()
+                .openTopSellProduct();
+        String expectedTitle = "The Legend of Zelda : Tears of the Kingdom";
+        Assert.assertEquals(topSellProduct.getTitle(), expectedTitle,"The title is " +
+                "not as expected");
+        Assert.assertEquals(topSellProduct.getPrice(), "54.99€",
+                "The price has changed");
+
+    }
     @AfterTest
     public void teardown() {
-
         driver.quit();
     }
 }
