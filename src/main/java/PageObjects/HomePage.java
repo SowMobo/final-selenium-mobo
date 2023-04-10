@@ -19,12 +19,12 @@ public class HomePage extends BasePage {
          * Acceder au site "amazon.fr"
          */
         this.driver.get("https://amazon.fr");
-    }
-
-    public HomePage closeCookiesPopup() {
         /**
          * Accepter les cookies
          */
+        this.driver.findElement(accepTCookiesButton).click();
+    }
+    public HomePage closeCookiesPopup() {
         driver.findElement(accepTCookiesButton).click();
         return this;
     }

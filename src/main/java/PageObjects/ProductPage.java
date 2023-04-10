@@ -18,6 +18,7 @@ public class ProductPage extends BasePage{
     By expensiveProductOpenCartButton = By.cssSelector("span#attach-sidesheet-view-cart-button");
     By lowCostProductOpenCartButtonBy = By.cssSelector("#sw-gtc.a-button");
     By quantityBy = By.cssSelector("#quantity");
+    By productPriceBy = By.cssSelector("span.priceToPay");
     public ProductPage(WebDriver driver) {
         super(driver);
     }
@@ -50,6 +51,11 @@ public class ProductPage extends BasePage{
     public CartPage openCartLowCostProduct() {
         wait.until(ExpectedConditions.elementToBeClickable(lowCostProductOpenCartButtonBy)).click();
         return new CartPage(driver);
+    }
+
+    public String getPrice() {
+        String actualPrice = driver.findElement(productPriceBy).getText();
+        return actualPrice.replace('\n', '.');
     }
 }
 
