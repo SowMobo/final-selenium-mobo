@@ -12,7 +12,7 @@ import java.time.Duration;
 public class CartPage extends BasePage{
     By productTitles = By.cssSelector(".a-truncate.sc-grid-item-product-title");
     By cartItemsBy = By.cssSelector("#sc-active-cart .sc-list-item-content-inner");
-    By quantityBy = By.cssSelector(".a-dropdown-prompt");
+    By quantityBy = By.cssSelector("span.a-dropdown-prompt");
 
     public CartPage(WebDriver driver) {
         super(driver);
