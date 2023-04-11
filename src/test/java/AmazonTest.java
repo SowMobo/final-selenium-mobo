@@ -18,7 +18,7 @@ public class AmazonTest {
         driver.manage().window().maximize();
     }
 
-//    @Test
+    @Test
     public void top3SellHighTechProductSearchTest() {
         HomePage home = new HomePage(driver);
         ProductPage thirdTopSellProduct = home.openBestSellPage()
@@ -42,10 +42,9 @@ public class AmazonTest {
         Assert.assertTrue(expextedProductTitle.contains(actualSubTitle),
                 "Expected title do not contain the actual sub title. Actual sub title is:" +
                         actualSubTitle);
-        driver.quit();
     }
 
-//    @Test
+    @Test
     public void searchTopSellGameAndConsoleItem() {
         HomePage home = new HomePage(driver);
         ProductPage topSellProduct = home.openAllMenuPage()
@@ -56,7 +55,6 @@ public class AmazonTest {
                 "not as expected");
         Assert.assertEquals(topSellProduct.getPrice(), "54.99€",
                 "The price has changed");
-        driver.quit();
     }
 
     @Test
@@ -67,14 +65,13 @@ public class AmazonTest {
                 .updateQuantity(1);
         String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Noir sidéral";
         Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
-        String expectedPrice = "1 209.00€";
+        String expectedPrice = "1 179.00€";
         Assert.assertEquals(product.getPrice(), expectedPrice, "Wrong price");
         CartPage monPanier = product.addToCart()
                 .notAcceptInsurance()
                 .openCartExpensiveProduct();
         assertThat(expectedTitle).contains(monPanier.getProductTitle(0));
         Assert.assertEquals(monPanier.getQuantity(0), "2", "Incorrect quantity");
-        driver.quit();
 
     }
 
