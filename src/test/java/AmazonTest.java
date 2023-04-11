@@ -1,13 +1,14 @@
 import PageObjects.CartPage;
 import PageObjects.HomePage;
 import PageObjects.ProductPage;
+import PageObjects.SearchResultsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
+import static org.assertj.core.api.Assertions.assertThat;
 public class AmazonTest {
     WebDriver driver;
 
@@ -54,8 +55,27 @@ public class AmazonTest {
                 "not as expected");
         Assert.assertEquals(topSellProduct.getPrice(), "54.99€",
                 "The price has changed");
+    }
+
+    @Test
+    public void searchAndAddArticleToCartByKeyword() {
+        HomePage home = new HomePage(driver);
+        ProductPage product = home.searchItemBy("Iphone 14 pro")
+                .getProduct(0)
+                .updateQuantity(1);
+        String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Noir sidéral";
+        Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
+        String expectedPrice = "1 209.00€";
+        Assert.assertEquals(product.getPrice(), expectedPrice, "Wrong price");
+        CartPage monPanier = product.addToCart()
+                .notAcceptInsurance()
+                .openCartExpensiveProduct();
+        assertThat(expectedTitle).contains(monPanier.getProductTitle(0));
+        Assert.assertEquals(monPanier.getQuantity(0), "2", "Incorrect quantity");
+
 
     }
+
     @AfterTest
     public void teardown() {
         driver.quit();
