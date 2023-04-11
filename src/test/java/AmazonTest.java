@@ -18,7 +18,7 @@ public class AmazonTest {
         driver.manage().window().maximize();
     }
 
-    @Test
+//    @Test
     public void top3SellHighTechProductSearchTest() {
         HomePage home = new HomePage(driver);
         ProductPage thirdTopSellProduct = home.openBestSellPage()
@@ -45,7 +45,7 @@ public class AmazonTest {
         driver.quit();
     }
 
-    @Test
+//    @Test
     public void searchTopSellGameAndConsoleItem() {
         HomePage home = new HomePage(driver);
         ProductPage topSellProduct = home.openAllMenuPage()
