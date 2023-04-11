@@ -42,6 +42,7 @@ public class AmazonTest {
         Assert.assertTrue(expextedProductTitle.contains(actualSubTitle),
                 "Expected title do not contain the actual sub title. Actual sub title is:" +
                         actualSubTitle);
+        driver.quit();
     }
 
     @Test
@@ -55,6 +56,7 @@ public class AmazonTest {
                 "not as expected");
         Assert.assertEquals(topSellProduct.getPrice(), "54.99€",
                 "The price has changed");
+        driver.quit();
     }
 
     @Test
@@ -72,7 +74,7 @@ public class AmazonTest {
                 .openCartExpensiveProduct();
         assertThat(expectedTitle).contains(monPanier.getProductTitle(0));
         Assert.assertEquals(monPanier.getQuantity(0), "2", "Incorrect quantity");
-
+        driver.quit();
 
     }
 

@@ -17,7 +17,7 @@ public class ProductPage extends BasePage{
     //locator 2: span#attach-sidesheet-view-cart-button
     By expensiveProductOpenCartButton = By.cssSelector("span#attach-sidesheet-view-cart-button");
     By lowCostProductOpenCartButtonBy = By.cssSelector("#sw-gtc.a-button");
-    By quantityBy = By.cssSelector("#quantity");
+    By quantityBy = By.cssSelector(".a-dropdown-container #quantity");
     By productPriceBy = By.cssSelector("span.priceToPay");
     public ProductPage(WebDriver driver) {
         super(driver);
