@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BasePage {
-    private int TIMEOUT = 10;
+    private int TIMEOUT = 5;
     WebDriver driver;
     WebDriverWait wait;
     // CSSLocators

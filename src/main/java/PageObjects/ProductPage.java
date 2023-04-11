@@ -28,7 +28,7 @@ public class ProductPage extends BasePage{
     }
 
    public ProductPage updateQuantity(int newQuantity) {
-        this.setTIMEOUT(15);
+        this.setTIMEOUT(10);
         WebElement quantitySelectorTag = wait.until(ExpectedConditions.presenceOfElementLocated(quantityBy));
         Select dropdownQuantityTag = new Select(quantitySelectorTag);
         dropdownQuantityTag.selectByIndex(newQuantity);

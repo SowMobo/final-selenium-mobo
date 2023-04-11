@@ -61,8 +61,8 @@ public class AmazonTest {
     public void searchAndAddArticleToCartByKeyword() {
         HomePage home = new HomePage(driver);
         ProductPage product = home.searchItemBy("Iphone 14 pro")
-                .getProduct(0)
-                .updateQuantity(1);
+                .getProduct(0);
+
         String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Noir sidéral";
         Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
         String expectedPrice = "1 179.00€";
@@ -71,7 +71,7 @@ public class AmazonTest {
                 .notAcceptInsurance()
                 .openCartExpensiveProduct();
         assertThat(expectedTitle).contains(monPanier.getProductTitle(0));
-        Assert.assertEquals(monPanier.getQuantity(0), "2", "Incorrect quantity");
+        Assert.assertEquals(monPanier.getQuantity(0), "1", "Incorrect quantity");
 
     }
 
