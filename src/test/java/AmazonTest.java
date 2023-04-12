@@ -62,8 +62,8 @@ public class AmazonTest {
         HomePage home = new HomePage(driver);
         ProductPage product = home.searchItemBy("Iphone 14 pro")
                 .getProduct(0);
-
-        String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Noir sidéral";
+        // for local test use this as expectedTitle : Apple iPhone 14 Pro (128 Go) - Noir sidéral
+        String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Argent";
         Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
         String expectedPrice = "1 209.00€";
         Assert.assertEquals(product.getPrice(), expectedPrice, "Wrong price");
