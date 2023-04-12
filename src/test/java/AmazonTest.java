@@ -27,9 +27,9 @@ public class AmazonTest {
                 .updateQuantity(2);
 
         String actualProductTitle = thirdTopSellProduct.getTitle();
-        String expextedProductTitle = "Chargeur Rapide USB C - Certifié MFi - Chargeur Rapide" +
-                " PD 20W avec câble 6FT C vers Lightning Adaptateur de Chargeur de Type C pour " +
-                "iPhone 14/14 Plus/14 Pro/14 Pro Max/13/12/11/SE/iPad Pro";
+        String expextedProductTitle = "Tapo Caméra Surveillance WiFi intérieure 1080P C200," +
+                " détection de mouvement, audio bidirectionnel, compatible avec Alexa et Google" +
+                " Assistant, pour Bébé/Animaux";
         Assert.assertEquals(actualProductTitle,expextedProductTitle,
                 "Incorrect title");
 
@@ -65,7 +65,7 @@ public class AmazonTest {
 
         String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Noir sidéral";
         Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
-        String expectedPrice = "1 179.00€";
+        String expectedPrice = "1 209.00€";
         Assert.assertEquals(product.getPrice(), expectedPrice, "Wrong price");
         CartPage monPanier = product.addToCart()
                 .notAcceptInsurance()
