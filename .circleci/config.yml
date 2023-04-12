@@ -5,22 +5,22 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  tests-amazon-selenium:
+  say-hello:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
-    machine: # executor type
-      image: ubuntu-2204:2023.02.1
+    docker:
+      - image: cimg/base:stable
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
-      - checkout # copy code into virtual machine
+      - checkout
       - run:
-          name: "Launch the tests"
-          command: mvn clean test
+          name: "Say hello"
+          command: "echo Hello, World!"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  tests-amazon-selenium-workflow:
+  say-hello-workflow:
     jobs:
-      - tests-amazon-selenium
+      - say-hello
