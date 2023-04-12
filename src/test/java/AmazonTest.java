@@ -65,7 +65,8 @@ public class AmazonTest {
         // for local test use this as expectedTitle : Apple iPhone 14 Pro (128 Go) - Noir sidéral
         String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Argent";
         Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
-        String expectedPrice = "1 209.00€";
+        // For local test use this as expected price : 1 209.00€
+        String expectedPrice = "1 081.00€";
         Assert.assertEquals(product.getPrice(), expectedPrice, "Wrong price");
         CartPage monPanier = product.addToCart()
                 .notAcceptInsurance()
