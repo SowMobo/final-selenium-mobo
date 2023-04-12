@@ -14,11 +14,12 @@ public class ProductPage extends BasePage{
     By addToCartButton = By.cssSelector("input#add-to-cart-button");
     By nonMerciButton = By.cssSelector("span#attachSiNoCoverage");
     //locator 1:  #sw-gtc #nav-cart
-    //locator 2: span#attach-sidesheet-view-cart-button
+    //locator 2:  #sw-gtc.a-button
     By expensiveProductOpenCartButton = By.cssSelector("span#attach-sidesheet-view-cart-button");
-    By lowCostProductOpenCartButtonBy = By.cssSelector("#sw-gtc.a-button");
-    By quantityBy = By.cssSelector("#quantity");
+    By lowCostProductOpenCartButtonBy = By.cssSelector("span#attach-sidesheet-view-cart-button");
+    By quantityBy = By.cssSelector("#addToCart #quantity");
     By productPriceBy = By.cssSelector("span.priceToPay");
+    By declineSuggestionBy =  By.cssSelector("span.abb-intl-decline");
     public ProductPage(WebDriver driver) {
         super(driver);
     }
@@ -28,7 +29,8 @@ public class ProductPage extends BasePage{
     }
 
    public ProductPage updateQuantity(int newQuantity) {
-        WebElement quantitySelectorTag = driver.findElement(quantityBy);
+        this.setTIMEOUT(10);
+        WebElement quantitySelectorTag = wait.until(ExpectedConditions.presenceOfElementLocated(quantityBy));
         Select dropdownQuantityTag = new Select(quantitySelectorTag);
         dropdownQuantityTag.selectByIndex(newQuantity);
         return this;
@@ -46,6 +48,11 @@ public class ProductPage extends BasePage{
     public CartPage openCartExpensiveProduct() {
         wait.until(ExpectedConditions.elementToBeClickable(expensiveProductOpenCartButton)).click();
         return new CartPage(driver);
+    }
+
+    public ProductPage declineSuggestion() {
+        wait.until(ExpectedConditions.elementToBeClickable(declineSuggestionBy)).click();
+        return this;
     }
 
     public CartPage openCartLowCostProduct() {
