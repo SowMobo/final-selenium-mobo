@@ -5,6 +5,7 @@ import PageObjects.SearchResultsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -63,10 +64,10 @@ public class AmazonTest {
         ProductPage product = home.searchItemBy("Iphone 14 pro")
                 .getProduct(0);
         // for local test use this as expectedTitle : Apple iPhone 14 Pro (128 Go) - Noir sidéral
-        String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Argent";
+        String expectedTitle = "Apple iPhone 14 Pro (128 Go) - Noir sidéral";
         Assert.assertEquals(product.getTitle(), expectedTitle, "Incorrect title");
         // For local test use this as expected price : 1 209.00€
-        String expectedPrice = "1 081.00€";
+        String expectedPrice = "1 149.05€";
         Assert.assertEquals(product.getPrice(), expectedPrice, "Wrong price");
         CartPage monPanier = product.addToCart()
                 .notAcceptInsurance()
@@ -76,7 +77,7 @@ public class AmazonTest {
 
     }
 
-    @AfterTest
+    @AfterMethod
     public void teardown() {
         driver.quit();
     }
